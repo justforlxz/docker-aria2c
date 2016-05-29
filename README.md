@@ -1,5 +1,10 @@
 该项目是将aria2c封装进docker并提供服务。
 
+
+    docker pull kirigayakazushin/docker-aria2c
+
+下载好镜像，然后保存一份运行
+
     docker run -p 6800:6800 --name docker-aria2c -d \
     -v {下载目录的绝对路径}:/aria2/downloads \
     imashiro/docker-aria2c
