@@ -14,3 +14,7 @@
 输入
 
     http://token:secret@127.0.0.1:6800/jsonrpc
+
+开机启动
+    
+    sudo cp docker-aria2c.service /etc/systemd/system/docker-aria2c.service &&  sudo systemctl enable docker-aria2c.service

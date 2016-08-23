@@ -1,0 +1,11 @@
+[Unit]
+Description=Redis container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a docker-aria2c
+
+[Install]
+WantedBy=default.target
