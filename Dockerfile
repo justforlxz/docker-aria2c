@@ -1,24 +1,30 @@
-FROM debian:8
-MAINTAINER imashiro,<kirigaya@imashiro.cn>
+FROM alpine:3.9
+MAINTAINER justforlxz,<justforlxz@gmail.com>
 
 # aria2
-RUN apt-get update \
-	&& apt-get install -y aria2
-ENV USER docker
-ENV GROUP docker
-RUN useradd --create-home --shell /bin/bash --gid users $USER
+RUN apk add --no-cache \
+                aria2 \
+                bash
 RUN \
  mkdir /aria2/ && \
- mkdir /aria2/downloads/ && \
- touch /aria2/session.lock
+ mkdir /aria2/downloads/
 
 WORKDIR /aria2
-
 VOLUME ["/aria2/downloads"]
 
 EXPOSE 6800
 
-ADD aria2.conf /aria2/aria2.conf
+COPY entrypoint /usr/local/bin/
+COPY aria2.conf /aria2/aria2.conf
+
+RUN mkdir -p /etc/aria2-config/
+RUN chmod 777 /etc/aria2-config/
+
+RUN chmod +x /usr/local/bin/*
+
+RUN addgroup -g 1000 docker
+RUN adduser -u 1000 -D -G docker docker
+
 USER docker
-ENTRYPOINT ["/usr/bin/aria2c","--conf-path=/aria2/aria2.conf"]
-CMD ['/bin/bash']
+
+ENTRYPOINT ["/usr/local/bin/entrypoint"]

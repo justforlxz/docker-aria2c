@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ ! -d "/etc/aria2-config/aria2.session" ];then
+    touch /etc/aria2-config/aria2.session
+fi
+
+/usr/bin/aria2c --conf-path=/aria2/aria2.conf
