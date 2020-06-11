@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d "/etc/aria2-config/aria2.session" ];then
+if [ ! -f "/etc/aria2-config/aria2.session" ];then
     touch /etc/aria2-config/aria2.session
 fi
 
