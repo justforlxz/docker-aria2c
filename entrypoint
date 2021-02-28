@@ -1,8 +1,8 @@
 #!/bin/bash
-echo $(id)
-if [ ! -f "/home/docker/.config/aria2c/aria2.session" ];then
-    mkdir -p ~/.config/aria2c
-    touch ~/.config/aria2c/aria2.session
+
+if [ ! -f "/root/Downloads/aria2.session" ];then
+    mkdir -p /root/Downloads/
+    touch /root/Downloads/aria2.session
 fi
 
 /usr/bin/aria2c --conf-path=/aria2/aria2.conf

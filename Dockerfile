@@ -12,7 +12,4 @@ COPY aria2.conf /aria2/aria2.conf
 
 RUN chmod +x /usr/local/bin/*
 
-RUN addgroup -g 1000 docker
-RUN adduser -u 1000 -D -G docker docker
-
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
